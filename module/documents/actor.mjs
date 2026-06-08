@@ -14,6 +14,11 @@ export class SWNActor extends Actor {
 
   /** @override */
   prepareBaseData() {
+    // Foundry v14 initializes core base data here (notably
+    // `tokenActiveEffectChanges`, which `applyActiveEffects()` reads during
+    // `prepareEmbeddedDocuments()`). Skipping the super call leaves it
+    // undefined and actor data preparation throws on v14.
+    super.prepareBaseData();
     // Data modifications in this step occur before processing embedded
     // documents or derived data.
   }
@@ -26,6 +31,7 @@ export class SWNActor extends Actor {
    * is queried and has a roll executed directly from it).
    */
   prepareDerivedData() {
+    super.prepareDerivedData();
     const actorData = this;
     const flags = actorData.flags.swnr || {};
   }
