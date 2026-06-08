@@ -578,7 +578,7 @@ export class SWNVehicleSheet extends SWNBaseSheet {
       pool: CONFIG.SWN.pool,
     };
     const template = "systems/swnr/templates/dialogs/roll-skill-crew.hbs";
-    const html = await renderTemplate(template, dialogData);
+    const html = await foundry.applications.handlebars.renderTemplate(template, dialogData);
 
     const _rollForm = async (_event, button, html) => {
       const rollMode = game.settings.get("core", "rollMode");
@@ -939,7 +939,7 @@ export class SWNVehicleSheet extends SWNBaseSheet {
     };
 
     const template = "systems/swnr/templates/dialogs/roll-sensor.hbs";
-    const html = renderTemplate(template, dialogData);
+    const html = foundry.applications.handlebars.renderTemplate(template, dialogData);
     const _rollForm = async (_event, button, _html) => {
       const mod = parseInt(
         button.form.elements.modifier?.value
@@ -1088,7 +1088,7 @@ export class SWNVehicleSheet extends SWNBaseSheet {
     };
 
     const template = "systems/swnr/templates/dialogs/roll-spike.hbs";
-    const html = renderTemplate(template, dialogData);
+    const html = foundry.applications.handlebars.renderTemplate(template, dialogData);
 
     const _rollForm = async (_event, button, _html) => {
       const mod = parseInt(
@@ -1187,7 +1187,7 @@ export class SWNVehicleSheet extends SWNBaseSheet {
     });
     const dialogData = {};
     const template = "systems/swnr/templates/dialogs/roll-ship-failure.hbs";
-    const html = renderTemplate(template, dialogData);
+    const html = foundry.applications.handlebars.renderTemplate(template, dialogData);
 
     const _rollForm = async (_event, button, html) => {
       const incDrive = button.form.elements.incdrive?.checked

@@ -141,7 +141,7 @@ export default class SWNShipWeapon extends SWNVehicleItemBase {
       };
 
       const template = "systems/swnr/templates/dialogs/roll-ship-attack.hbs";
-      const html = await renderTemplate(template, dialogData);
+      const html = await foundry.applications.handlebars.renderTemplate(template, dialogData);
 
       const _rollForm = async (_event, button, html) => {
         const mod = parseInt(button.form.elements.modifier.value);
@@ -316,7 +316,7 @@ export default class SWNShipWeapon extends SWNVehicleItemBase {
         foundry.dice.terms.PoolTerm.fromRolls([hitRoll, damageRoll]),
       ]);
 
-      const chatContent = await renderTemplate(template, dialogData);
+      const chatContent = await foundry.applications.handlebars.renderTemplate(template, dialogData);
       const chatData = {
         speaker: { alias: shooterName },
         roll: JSON.stringify(diceData),

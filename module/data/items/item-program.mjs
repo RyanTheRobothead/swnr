@@ -118,7 +118,7 @@ export default class SWNProgram extends SWNItemBase {
     };
     const rollMode = game.settings.get("core", "rollMode");
 
-    const chatContent = await renderTemplate(template, dialogData);
+    const chatContent = await foundry.applications.handlebars.renderTemplate(template, dialogData);
     // TODO: break up into two rolls and chain them?
     // const promise = game.dice3d
     //   ? game.dice3d.showForRoll(diceData)

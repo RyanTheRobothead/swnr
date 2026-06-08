@@ -253,7 +253,7 @@ export class SWNCyberdeckSheet extends SWNBaseSheet {
       pool: CONFIG.SWN.pool,
     };
     const template = "systems/swnr/templates/dialogs/roll-skill-crew.hbs";
-    const html = await renderTemplate(template, dialogData);
+    const html = await foundry.applications.handlebars.renderTemplate(template, dialogData);
 
     const _rollForm = async (_event, button, html) => {
       const rollMode = game.settings.get("core", "rollMode");

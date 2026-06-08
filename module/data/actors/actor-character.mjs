@@ -332,7 +332,7 @@ export default class SWNCharacter extends SWNActorBase {
       throwType: game.i18n.localize("swnr.sheet.saves." + saveType),
     });
     const dialogData = {};
-    const html = await renderTemplate(template, dialogData);
+    const html = await foundry.applications.handlebars.renderTemplate(template, dialogData);
 
     //Callback for rolling
     const _doRoll = async (_event, button, _html) => {
@@ -363,7 +363,7 @@ export default class SWNCharacter extends SWNActorBase {
         save_text,
         success,
       };
-      const chatContent = await renderTemplate(chatTemplate, chatDialogData);
+      const chatContent = await foundry.applications.handlebars.renderTemplate(chatTemplate, chatDialogData);
       const chatData = {
         speaker: ChatMessage.getSpeaker(),
         roll: JSON.stringify(roll),
@@ -697,7 +697,7 @@ export default class SWNCharacter extends SWNActorBase {
       success,
       stressUpdate
     };
-    const chatContent = await renderTemplate(chatTemplate, chatDialogData);
+    const chatContent = await foundry.applications.handlebars.renderTemplate(chatTemplate, chatDialogData);
     const chatData = {
       speaker: ChatMessage.getSpeaker(),
       roll: JSON.stringify(roll),

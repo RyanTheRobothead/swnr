@@ -275,7 +275,7 @@ export default class SWNWeapon extends SWNBaseGearItem {
       if (newAmmoTotal === 0)
         ui.notifications?.warn(`Your ${item.name} is now out of ammo!`);
     }
-    const chatContent = await renderTemplate(template, dialogData);
+    const chatContent = await foundry.applications.handlebars.renderTemplate(template, dialogData);
     const chatData = {
       speaker: ChatMessage.getSpeaker({ actor: actor ?? undefined }),
       roll: JSON.stringify(diceData),
@@ -389,7 +389,7 @@ export default class SWNWeapon extends SWNBaseGearItem {
       stats: actor.system.stats,
     };
     const template = "systems/swnr/templates/dialogs/roll-attack.hbs";
-    const html = await renderTemplate(template, dialogData);
+    const html = await foundry.applications.handlebars.renderTemplate(template, dialogData);
 
     const _rollForm = async (_event, button, html) => {
       const modifier = parseInt(button.form.elements.modifier.value);

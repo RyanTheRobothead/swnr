@@ -95,7 +95,7 @@ function getRerollButton(
       title: flavor,
       isAttack,
     };
-    const chatContent = await renderTemplate(chatTemplate, chatDialogData);
+    const chatContent = await foundry.applications.handlebars.renderTemplate(chatTemplate, chatDialogData);
     const chatData = {
       speaker: ChatMessage.getSpeaker(),
       roll: JSON.stringify(roll),
@@ -460,7 +460,7 @@ export async function _onDmgRollClick(event, message) {
     traumaRollRender,
     traumaDamage,
   };
-  const damageRollContent = await renderTemplate(damageRollTemplate, damageRollData);
+  const damageRollContent = await foundry.applications.handlebars.renderTemplate(damageRollTemplate, damageRollData);
   const chatData = {
     speaker: ChatMessage.getSpeaker({ actor }),
     content: damageRollContent,
@@ -656,7 +656,7 @@ export async function _onChatCardAction(
 
 
         const template = "systems/swnr/templates/chat/power-usage.hbs";
-        const newContent = await foundry.applications.handlebars.renderTemplate(template, templateData);
+        const newContent = await foundry.applications.handlebars.foundry.applications.handlebars.renderTemplate(template, templateData);
         
         // Update the current message
         const messageId = chatCard.data('message-id');
@@ -809,7 +809,7 @@ export async function _onChatCardAction(
       };
       
       const template = "systems/swnr/templates/chat/power-usage.hbs";
-      const newContent = await foundry.applications.handlebars.renderTemplate(template, templateData);
+      const newContent = await foundry.applications.handlebars.foundry.applications.handlebars.renderTemplate(template, templateData);
       
       if (chatMsg) {
         await chatMsg.update({ 
@@ -941,7 +941,7 @@ export async function _onChatCardAction(
       };
 
       const template = "systems/swnr/templates/chat/power-usage.hbs";
-      const newContent = await foundry.applications.handlebars.renderTemplate(template, templateData);
+      const newContent = await foundry.applications.handlebars.foundry.applications.handlebars.renderTemplate(template, templateData);
 
       if (chatMsg) {
         await chatMsg.update({ 
@@ -1175,7 +1175,7 @@ export async function _onChatCardAction(
 export async function welcomeMessage() {
 		const template = "systems/swnr/templates/chat/welcome.hbs";
 
-		const content = await renderTemplate(template, {});
+		const content = await foundry.applications.handlebars.renderTemplate(template, {});
 		const card = {
 			content,
 			user: game.user.id,

@@ -135,7 +135,7 @@ export default class SWNSkill extends SWNItemBase {
       stats: actor.system.stats
     };
 
-    const content = await renderTemplate(template, dialogData);
+    const content = await foundry.applications.handlebars.renderTemplate(template, dialogData);
     const _doRoll = async (_event, button, html) => {
       const dice = button.form.elements.dicepool.value;
       const statShortNameForm = button.form.elements.stat.value;

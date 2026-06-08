@@ -989,7 +989,7 @@ export class SWNActorSheet extends SWNBaseSheet {
       return;
     };
     const template = "systems/swnr/templates/dialogs/add-bulk-skills.hbs";
-    const content = await renderTemplate(template, {});
+    const content = await foundry.applications.handlebars.renderTemplate(template, {});
 
     const _resp = await foundry.applications.api.DialogV2.prompt(
       {
@@ -1057,7 +1057,7 @@ export class SWNActorSheet extends SWNBaseSheet {
         return s + v.mod;
       }, 0),
     };
-    const chatContent = await renderTemplate(
+    const chatContent = await foundry.applications.handlebars.renderTemplate(
       "systems/swnr/templates/chat/stat-block.hbs",
       data
     );
@@ -1244,7 +1244,7 @@ export class SWNActorSheet extends SWNBaseSheet {
     const currencyIdx = target.dataset.currencyIdx;
     const currency = this.actor.system.credits.extraCurrencies[currencyIdx];
     const template = "systems/swnr/templates/dialogs/add-currency-type.hbs";
-    const content = await renderTemplate(template, { settings: getGameSettings(), currency: currency });
+    const content = await foundry.applications.handlebars.renderTemplate(template, { settings: getGameSettings(), currency: currency });
     const _resp = await foundry.applications.api.DialogV2.wait(
       {
         window: {
@@ -1356,7 +1356,7 @@ export class SWNActorSheet extends SWNBaseSheet {
   static async _onAddCurrency(event, target) {
     event.preventDefault();
     const template = "systems/swnr/templates/dialogs/add-currency-type.hbs";
-    const content = await renderTemplate(template, { settings: getGameSettings(), currency: {} });
+    const content = await foundry.applications.handlebars.renderTemplate(template, { settings: getGameSettings(), currency: {} });
 
     const _resp = await foundry.applications.api.DialogV2.prompt(
       {

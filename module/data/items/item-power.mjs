@@ -452,7 +452,7 @@ export default class SWNPower extends SWNItemBase {
     };
 
     const template = "systems/swnr/templates/chat/power-usage.hbs";
-    const chatContent = await foundry.applications.handlebars.renderTemplate(template, templateData);
+    const chatContent = await foundry.applications.handlebars.foundry.applications.handlebars.renderTemplate(template, templateData);
     
     const chatData = {
       speaker: ChatMessage.getSpeaker({ actor: actor }),
@@ -517,7 +517,7 @@ export default class SWNPower extends SWNItemBase {
     const rollMode = game.settings.get("core", "rollMode");
 
     const template = "systems/swnr/templates/chat/power-usage.hbs";
-    const chatContent = await foundry.applications.handlebars.renderTemplate(template, dialogData);
+    const chatContent = await foundry.applications.handlebars.foundry.applications.handlebars.renderTemplate(template, dialogData);
     const chatData = {
       speaker: ChatMessage.getSpeaker({ actor: actor ?? undefined }),
       content: chatContent,
@@ -884,7 +884,7 @@ export default class SWNPower extends SWNItemBase {
       value: i.system?.uses?.value || 0,
       max: i.system?.uses?.max || (i.system?.uses?.value || 0)
     }));
-    const content = await renderTemplate(template, { items });
+    const content = await foundry.applications.handlebars.renderTemplate(template, { items });
 
     return new Promise((resolve) => {
       const dialogId = `swnr-consume-select-${actor.id}-${Date.now()}`;
