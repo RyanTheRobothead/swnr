@@ -205,7 +205,7 @@ export class SWNBaseSheet extends api.HandlebarsApplicationMixin(
         dragleave: this._onDragLeave.bind(this),
         drop: this._onDrop.bind(this),
       };
-      return new DragDrop(d);
+      return new foundry.applications.ux.DragDrop.implementation(d);
     });
   }
 

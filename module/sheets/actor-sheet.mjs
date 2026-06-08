@@ -213,7 +213,7 @@ export class SWNActorSheet extends SWNBaseSheet {
     };
 
     // Ensure shared fragments are preloaded regardless of which parts render
-    await loadTemplates([
+    await foundry.applications.handlebars.loadTemplates([
       'systems/swnr/templates/actor/fragments/pools-display.hbs'
     ]);
 
