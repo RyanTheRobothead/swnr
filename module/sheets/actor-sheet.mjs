@@ -1166,7 +1166,7 @@ export class SWNActorSheet extends SWNBaseSheet {
     event.preventDefault();
     const dataset = target.dataset;
     const idx = dataset.rlIdx;
-    const resourceList = duplicate(this.actor.system.tweak.resourceList);
+    const resourceList = foundry.utils.duplicate(this.actor.system.tweak.resourceList);
     resourceList.splice(idx, 1);
     await this.actor.update({ "system.tweak.resourceList": resourceList });
   }
@@ -1176,7 +1176,7 @@ export class SWNActorSheet extends SWNBaseSheet {
     const value = event.target?.value;
     const resourceType = $(event.currentTarget).data("rlType");
     const idx = $(event.currentTarget).parents(".item").data("rlIdx");
-    const resourceList = duplicate(this.actor.system.tweak.resourceList);
+    const resourceList = foundry.utils.duplicate(this.actor.system.tweak.resourceList);
     resourceList[idx][resourceType] = value;
     await this.actor.update({ "system.tweak.resourceList": resourceList });
   }
@@ -1271,7 +1271,7 @@ export class SWNActorSheet extends SWNBaseSheet {
               value: currencyValue,
               carried: carried,
             };
-            const currencyList = duplicate(this.actor.system.credits.extraCurrencies);
+            const currencyList = foundry.utils.duplicate(this.actor.system.credits.extraCurrencies);
             currencyList[currencyIdx] = currency;
             await this.actor.update({
               "system.credits.extraCurrencies": currencyList
@@ -1297,7 +1297,7 @@ export class SWNActorSheet extends SWNBaseSheet {
               ui.notifications.info("Currency deletion cancelled");
               return "cancel";
             }
-            const currencyList = duplicate(this.actor.system.credits.extraCurrencies);
+            const currencyList = foundry.utils.duplicate(this.actor.system.credits.extraCurrencies);
             currencyList.splice(currencyIdx, 1);
             await this.actor.update({
               "system.credits.extraCurrencies": currencyList
@@ -1309,7 +1309,7 @@ export class SWNActorSheet extends SWNBaseSheet {
           action: "convert",
           icon: 'fas fa-exchange-alt',
           callback: async (_event, _button, _dialog) => {
-            const currencyList = duplicate(this.actor.system.credits.extraCurrencies);
+            const currencyList = foundry.utils.duplicate(this.actor.system.credits.extraCurrencies);
             const baseCurrencyName = game.settings.get("swnr", "baseCurrencyName");
             const currencyToConvert = currencyList[currencyIdx];
             let baseCurrencyToAdd = 0;
